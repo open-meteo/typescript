@@ -1,0 +1,14 @@
+{
+  "name": "openmeteo-typescript",
+  "version": "1.0.0",
+  "description": "Open-Meteo Typescript API SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "flatbuffers": "^23.5.26"
+  }
+}
