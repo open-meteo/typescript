@@ -110,5 +110,8 @@
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
+  },
+  "dependencies": {
+    "flatbuffers": "^23.5.26"
   }
 }

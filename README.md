@@ -46,6 +46,10 @@ Default: `rainbows`
 
 Lorem ipsum.
 
+
+Notes:
+flatc -o src/ --ts ~/Documents/open-meteo/format/*.fbs
+
 [build-img]:https://github.com/open-meteo/typescript/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/open-meteo/typescript/actions/workflows/release.yml
 [downloads-img]:https://img.shields.io/npm/dt/openmeteo
