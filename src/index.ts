@@ -1,7 +1,7 @@
 import { ByteBuffer } from 'flatbuffers';
 import { WeatherApi } from './com/openmeteo';
 
-async function test() {
+async function test_api_fetch() {
   const params = {
     latitude: [52.52, 48.1, 48.4],
     longitude: [13.41, 9.31, 8.5],
@@ -21,4 +21,5 @@ async function test() {
   return result;
 }
 
-export const myPackage = (taco = ''): string => `${taco} from my package`;
+export { test_api_fetch };
+// const myPackage = (taco = ''): string => `${taco} from my package`;

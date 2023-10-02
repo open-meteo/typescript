@@ -1,6 +1,6 @@
 {
   "name": "openmeteo",
-  "version": "0.0.0-development",
+  "version": "0.0.1-development",
   "description": "Open-Meteo Weather API",
   "main": "./lib/index.js",
   "files": [
