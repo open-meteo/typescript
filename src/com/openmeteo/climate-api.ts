@@ -2,8 +2,8 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { ClimateDaily } from '../../com/openmeteo/climate-daily.js';
-import { ClimateModel } from '../../com/openmeteo/climate-model.js';
+import { ClimateDaily } from '../../com/openmeteo/climate-daily';
+import { ClimateModel } from '../../com/openmeteo/climate-model';
 
 
 export class ClimateApi {

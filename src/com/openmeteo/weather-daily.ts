@@ -2,8 +2,8 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { TimeRange } from '../../com/openmeteo/time-range.js';
-import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit.js';
+import { TimeRange } from '../../com/openmeteo/time-range';
+import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit';
 
 
 export class WeatherDaily {

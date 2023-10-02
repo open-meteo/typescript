@@ -2,10 +2,10 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { AirQualityCurrent } from '../../com/openmeteo/air-quality-current.js';
-import { AirQualityHourly } from '../../com/openmeteo/air-quality-hourly.js';
-import { AirQualityModel } from '../../com/openmeteo/air-quality-model.js';
-import { TimeRange } from '../../com/openmeteo/time-range.js';
+import { AirQualityCurrent } from '../../com/openmeteo/air-quality-current';
+import { AirQualityHourly } from '../../com/openmeteo/air-quality-hourly';
+import { AirQualityModel } from '../../com/openmeteo/air-quality-model';
+import { TimeRange } from '../../com/openmeteo/time-range';
 
 
 export class AirQualityApi {

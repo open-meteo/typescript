@@ -48,7 +48,7 @@ Lorem ipsum.
 
 
 Notes:
-flatc -o src/ --ts ~/Documents/open-meteo/format/*.fbs
+`flatc -o src/ --ts --ts-no-import-ext ~/Documents/open-meteo/format/*.fbs`
 
 [build-img]:https://github.com/open-meteo/typescript/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/open-meteo/typescript/actions/workflows/release.yml

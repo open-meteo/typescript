@@ -2,9 +2,9 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { TimeRange } from '../../com/openmeteo/time-range.js';
-import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit.js';
-import { ValuesUnitAndMember } from '../../com/openmeteo/values-unit-and-member.js';
+import { TimeRange } from '../../com/openmeteo/time-range';
+import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit';
+import { ValuesUnitAndMember } from '../../com/openmeteo/values-unit-and-member';
 
 
 export class FloodDaily {

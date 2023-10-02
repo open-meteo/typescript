@@ -2,8 +2,8 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { SiUnit } from '../../com/openmeteo/si-unit.js';
-import { ValuesAndMember } from '../../com/openmeteo/values-and-member.js';
+import { SiUnit } from '../../com/openmeteo/si-unit';
+import { ValuesAndMember } from '../../com/openmeteo/values-and-member';
 
 
 export class ValuesUnitAndMember {

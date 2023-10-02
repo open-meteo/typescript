@@ -2,9 +2,9 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { TimeRange } from '../../com/openmeteo/time-range.js';
-import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit.js';
-import { ValuesUnitPressureLevel } from '../../com/openmeteo/values-unit-pressure-level.js';
+import { TimeRange } from '../../com/openmeteo/time-range';
+import { ValuesAndUnit } from '../../com/openmeteo/values-and-unit';
+import { ValuesUnitPressureLevel } from '../../com/openmeteo/values-unit-pressure-level';
 
 
 export class WeatherHourly {

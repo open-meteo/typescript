@@ -2,7 +2,7 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { ValuesAndMember } from '../../com/openmeteo/values-and-member.js';
+import { ValuesAndMember } from '../../com/openmeteo/values-and-member';
 
 
 export class ValuesAndLevelAndMember {

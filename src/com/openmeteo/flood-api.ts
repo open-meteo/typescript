@@ -2,9 +2,9 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { FloodDaily } from '../../com/openmeteo/flood-daily.js';
-import { FloodModel } from '../../com/openmeteo/flood-model.js';
-import { TimeRange } from '../../com/openmeteo/time-range.js';
+import { FloodDaily } from '../../com/openmeteo/flood-daily';
+import { FloodModel } from '../../com/openmeteo/flood-model';
+import { TimeRange } from '../../com/openmeteo/time-range';
 
 
 export class FloodApi {

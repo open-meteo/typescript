@@ -2,10 +2,10 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { MarineCurrent } from '../../com/openmeteo/marine-current.js';
-import { MarineDaily } from '../../com/openmeteo/marine-daily.js';
-import { MarineHourly } from '../../com/openmeteo/marine-hourly.js';
-import { MarineModel } from '../../com/openmeteo/marine-model.js';
+import { MarineCurrent } from '../../com/openmeteo/marine-current';
+import { MarineDaily } from '../../com/openmeteo/marine-daily';
+import { MarineHourly } from '../../com/openmeteo/marine-hourly';
+import { MarineModel } from '../../com/openmeteo/marine-model';
 
 
 export class MarineApi {

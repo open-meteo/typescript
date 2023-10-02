@@ -2,7 +2,7 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { ValueAndUnit } from '../../com/openmeteo/value-and-unit.js';
+import { ValueAndUnit } from '../../com/openmeteo/value-and-unit';
 
 
 export class AirQualityCurrent {

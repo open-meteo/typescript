@@ -2,9 +2,9 @@
 
 import * as flatbuffers from 'flatbuffers';
 
-import { EnsembleDaily } from '../../com/openmeteo/ensemble-daily.js';
-import { EnsembleHourly } from '../../com/openmeteo/ensemble-hourly.js';
-import { EnsembleModel } from '../../com/openmeteo/ensemble-model.js';
+import { EnsembleDaily } from '../../com/openmeteo/ensemble-daily';
+import { EnsembleHourly } from '../../com/openmeteo/ensemble-hourly';
+import { EnsembleModel } from '../../com/openmeteo/ensemble-model';
 
 
 export class EnsembleApi {
