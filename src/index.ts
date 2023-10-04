@@ -21,5 +21,5 @@ async function test_api_fetch() {
   return result;
 }
 
-export { test_api_fetch };
+export { test_api_fetch, WeatherApi };
 // const myPackage = (taco = ''): string => `${taco} from my package`;
