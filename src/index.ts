@@ -5,7 +5,7 @@ async function test_api_fetch() {
   const params = {
     latitude: '52.52,48.1,48.4',
     longitude: '13.41,9.31,8.5',
-    hourly: 'temperature_2m,precipitation',
+    hourly: 'temperature_2m,precipitation,windspeed_10m',
     timezone: 'auto',
     current: 'temperature_2m,precipitation',
     format: 'flatbuffers',
