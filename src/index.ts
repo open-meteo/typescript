@@ -17,8 +17,17 @@ async function test_api_fetch() {
   const bb = await response.arrayBuffer();
   const fb = new ByteBuffer(new Uint8Array(bb));
 
-  const result = WeatherApiResponse.getSizePrefixedRootAsWeatherApiResponse(fb);
-  return result;
+  const results: WeatherApiResponse[] = [];
+  let pos = 0;
+  while (pos < fb.capacity()) {
+    const len = fb.readInt32(fb.position());
+    results.push(
+      WeatherApiResponse.getSizePrefixedRootAsWeatherApiResponse(fb)
+    );
+    pos += len + 4;
+    fb.setPosition(pos);
+  }
+  return results;
 }
 
 export { test_api_fetch, WeatherApiResponse };
