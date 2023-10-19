@@ -1,5 +1,5 @@
 import { ByteBuffer } from 'flatbuffers';
-import { WeatherApi } from './com/openmeteo';
+import { WeatherApiResponse } from '@openmeteo/sdk/weather-api-response';
 
 async function test_api_fetch() {
   const params = {
@@ -17,9 +17,9 @@ async function test_api_fetch() {
   const bb = await response.arrayBuffer();
   const fb = new ByteBuffer(new Uint8Array(bb));
 
-  const result = WeatherApi.getSizePrefixedRootAsWeatherApi(fb);
+  const result = WeatherApiResponse.getSizePrefixedRootAsWeatherApiResponse(fb);
   return result;
 }
 
-export { test_api_fetch, WeatherApi };
+export { test_api_fetch, WeatherApiResponse };
 // const myPackage = (taco = ''): string => `${taco} from my package`;
