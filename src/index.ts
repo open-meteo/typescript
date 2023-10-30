@@ -1,30 +1,34 @@
 import { ByteBuffer } from 'flatbuffers';
-import { ApiResponse } from '@openmeteo/sdk/api-response';
+import { WeatherApiResponse } from '@openmeteo/sdk/weather-api-response';
 
-async function weather_api(
+async function fetchWeatherApi(
   url: string,
   params: any
-): Promise<ApiResponse[]> {
+): Promise<WeatherApiResponse[]> {
   const urlParams = new URLSearchParams(params);
   urlParams.set('format', 'flatbuffers');
-  console.log(`${url}?${urlParams.toString()}`);
+  //console.log(`${url}?${urlParams.toString()}`);
   const response = await fetch(`${url}?${urlParams.toString()}`);
   const bb = await response.arrayBuffer();
   const fb = new ByteBuffer(new Uint8Array(bb));
 
   // TODO: retry, error handling
 
-  const results: ApiResponse[] = [];
+  const results: WeatherApiResponse[] = [];
   let pos = 0;
   while (pos < fb.capacity()) {
     fb.setPosition(pos);
     const len = fb.readInt32(fb.position());
     results.push(
-      ApiResponse.getSizePrefixedRootAsApiResponse(fb)
+      WeatherApiResponse.getSizePrefixedRootAsWeatherApiResponse(fb)
     );
     pos += len + 4;
   }
   return results;
 }
 
-export { weather_api };
+// Future endpoints
+// - fetchElevationApi
+// - fetchGeocodingApi
+
+export { fetchWeatherApi };
