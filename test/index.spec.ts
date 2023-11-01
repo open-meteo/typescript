@@ -7,6 +7,7 @@ describe('openmeteo', () => {
       // 2 location data, with hourly temp and precip
       global.fetch = jest.fn(() =>
         Promise.resolve({
+          status: 200,
           arrayBuffer: () =>
             Promise.resolve(
               new Uint8Array([
@@ -89,6 +90,52 @@ describe('openmeteo', () => {
       expect(temperature_2m_array).toBeDefined();
       expect(temperature_2m_array).toHaveLength(24);
       expect(temperature_2m_array![0]).toBeCloseTo(16.9459991, 2);
+    });
+  });
+});
+
+describe('openmeteo', () => {
+  describe('client', () => {
+    test('test_error', async () => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          status: 400,
+          json: () => Promise.resolve({ reason: 'Some error' }),
+        })
+      ) as jest.Mock;
+      await expect(fetchWeatherApi('', {})).rejects.toThrow('Some error');
+    });
+  });
+});
+
+describe('openmeteo', () => {
+  describe('client', () => {
+    test('test_unknown_error', async () => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          status: 400,
+          statusText: 'Other error',
+          json: () => Promise.resolve({}),
+        })
+      ) as jest.Mock;
+      await expect(fetchWeatherApi('', {})).rejects.toThrow('Other error');
+    });
+  });
+});
+
+describe('openmeteo', () => {
+  describe('client', () => {
+    test('test_retry', async () => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          status: 500,
+          statusText: 'Internal server error',
+        })
+      ) as jest.Mock;
+      await expect(fetchWeatherApi('', {})).rejects.toThrow(
+        'Internal server error'
+      );
+      expect(fetch).toHaveBeenCalledTimes(3);
     });
   });
 });
