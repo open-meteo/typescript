@@ -7,16 +7,16 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-This is an API client to get weather data from the [Open-Meteo Weather API](https://open-meteo.com) in Typescript / Javascript.
+This is a TypeScript/Javascript API client designed for retrieving weather information from the [Open-Meteo Weather API](https://open-meteo.com) in Typescript / Javascript.
 
-Instead of using JSON, the API client uses FlatBuffers to transfer data. Encoding data in FlatBuffers is more efficient for long time-series data. The schema definition files can be found on [GitHub open-meteo/sdk](https://github.com/open-meteo/sdk).
+Unlike conventional JSON APIs, this API client employs FlatBuffers for data transfer. This is a more efficient method, particularly for handling extended time-series data. You can locate the schema definition files on [GitHub open-meteo/sdk](https://github.com/open-meteo/sdk).
 
 Features:
-- Simple access to weather data
-- Get weather data for multiple locations in one call
-- Automatic retry on error
-- Reduced bandwidth and fast parsing using FlatBuffers and Zero Copy
-- Type annotated
+- Easily access weather data
+- Retrieve weather data for multiple locations with a single request
+- Automatic retry mechanism for handling errors
+- Enhanced bandwidth efficiency and speedy parsing using FlatBuffers and Zero Copy technology
+- Type annotations for enhanced code clarity
 
 ## Install
 
@@ -92,10 +92,34 @@ for (let i = 0; i < weatherData.daily.time.length; i++) {
     weatherData.daily.weatherCode[i], 
     weatherData.daily.temperatureMax[i], 
     weatherData.daily.temperatureMin[i]
-);
+  );
 }
 ```
 
+## Parameter
+
+This package only exposes one function to fetch weather data and decode the FlatBuffer messages.
+
+```ts
+/**
+ * Retrieve data from the Open-Meteo weather API
+ * 
+ * @param {string} url Server and endpoint. E.g. "https://api.open-meteo.com/v1/forecast"
+ * @param {any} params URL parameter as an object
+ * @param {number} [retries=3] Number of retries in case of an server error
+ * @param {number} [backoffFactor=0.2] Exponential backoff factor to increase wait time after each retry
+ * @param {number} [backoffMax=2] Maximum wait time between retries
+ * @returns {Promise<WeatherApiResponse[]>}
+ */
+async function fetchWeatherApi(
+  url: string,
+  params: any,
+  retries = 3,
+  backoffFactor = 0.2,
+  backoffMax = 2
+): Promise<WeatherApiResponse[]> {
+}
+```
 
 [build-img]:https://github.com/open-meteo/typescript/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/open-meteo/typescript/actions/workflows/release.yml

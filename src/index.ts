@@ -35,6 +35,16 @@ async function fetchRetried(
   return response;
 }
 
+/**
+ * Retrieve data from the Open-Meteo weather API
+ *
+ * @param {string} url Server and endpoint. E.g. "https://api.open-meteo.com/v1/forecast"
+ * @param {any} params URL parameter as an object
+ * @param {number} [retries=3] Number of retries in case of an server error
+ * @param {number} [backoffFactor=0.2] Exponential backoff factor to increase wait time after each retry
+ * @param {number} [backoffMax=2] Maximum wait time between retries
+ * @returns {Promise<WeatherApiResponse[]>}
+ */
 async function fetchWeatherApi(
   url: string,
   params: any,
