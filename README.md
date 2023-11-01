@@ -7,7 +7,7 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-This ia an API client to get weather data from the [Open-Meteo Weather API](https://open-meteo.com) in Typescript / Javascript. 
+This is an API client to get weather data from the [Open-Meteo Weather API](https://open-meteo.com) in Typescript / Javascript.
 
 Instead of using JSON, the API client uses FlatBuffers to transfer data. Encoding data in FlatBuffers is more efficient for long time-series data. The schema definition files can be found on [GitHub open-meteo/sdk](https://github.com/open-meteo/sdk).
 
@@ -26,6 +26,8 @@ npm install openmeteo
 
 ## Usage
 
+Note: The Open-Meteo [API documentation](https://open-meteo.com/en/docs) generates the required Typescript code automatically.
+
 ```ts
 import { fetchWeatherApi } from 'openmeteo';
 
@@ -39,8 +41,8 @@ const params = {
 const url = 'https://api.open-meteo.com/v1/forecast';
 const responses = await fetchWeatherApi(url, params);
 
-// Helper function to form time range
-export const range = (start: number, stop: number, step: number) =>
+// Helper function to form time ranges
+const range = (start: number, stop: number, step: number) =>
 	Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
 // Process first location. Add a for-loop for multiple locations or weather models
@@ -84,8 +86,13 @@ const weatherData = {
 };
 
 // `weatherData` now contains a simple structure with arrays for datetime and weather data
-for (let i = 0; i < daily.time.length; i++) {
-  console.log(daily.time[i].toISOString(), daily.weatherCode[i], daily.temperatureMax[i], daily.temperatureMin[i]);
+for (let i = 0; i < weatherData.daily.time.length; i++) {
+  console.log(
+    weatherData.daily.time[i].toISOString(), 
+    weatherData.daily.weatherCode[i], 
+    weatherData.daily.temperatureMax[i], 
+    weatherData.daily.temperatureMin[i]
+);
 }
 ```
 
