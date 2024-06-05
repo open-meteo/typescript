@@ -22,3 +22,14 @@ updates:
           - "typescript"
           - "gradle-semantic-release-plugin"
           - "@droidsolutions-oss/semantic-release-nuget"
+      eslint:
+        patterns:
+          - "@typescript-eslint/*"
+          - "@types/*"
+          - "eslint-*"
+          - "eslint"
+          - "sass"
+          - "typescript"
+          - "prettier"
+          - "lint-staged"
+          - "husky"
