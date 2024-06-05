@@ -113,6 +113,6 @@
   },
   "dependencies": {
     "@openmeteo/sdk": "^1.11.4",
-    "flatbuffers": "^23.5.26"
+    "flatbuffers": "^24.3.25"
   }
 }
