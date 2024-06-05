@@ -2,10 +2,15 @@
 # https://github.com/ryansonshine/ryansonshine/blob/main/.github/workflows/release.yml
 # maybe have to add `npm pkg delete scripts.prepare` to fix husky
 name: Release
+
+#on:
+#  push:
+#    branches:
+#      - main
+
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
 jobs:
   release:
     permissions:
