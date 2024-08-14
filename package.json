@@ -41,7 +41,7 @@
     "@ryansonshine/commitizen": "^4.2.8",
     "@ryansonshine/cz-conventional-changelog": "^3.3.4",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.3.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
