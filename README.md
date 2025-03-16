@@ -12,6 +12,7 @@ This is a TypeScript/Javascript API client designed for retrieving weather infor
 Unlike conventional JSON APIs, this API client employs FlatBuffers for data transfer. This is a more efficient method, particularly for handling extended time-series data. You can locate the schema definition files on [GitHub open-meteo/sdk](https://github.com/open-meteo/sdk).
 
 Features:
+
 - Easily access weather data
 - Retrieve weather data for multiple locations with a single request
 - Automatic retry mechanism for handling errors
@@ -43,7 +44,7 @@ const responses = await fetchWeatherApi(url, params);
 
 // Helper function to form time ranges
 const range = (start: number, stop: number, step: number) =>
-	Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
+ Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
 // Process first location. Add a for-loop for multiple locations or weather models
 const response = responses[0];
@@ -118,6 +119,69 @@ async function fetchWeatherApi(
   backoffFactor = 0.2,
   backoffMax = 2
 ): Promise<WeatherApiResponse[]> {
+}
+```
+
+## Authentication
+
+If the API requires authentication, you can pass the necessary headers using the `fetchOptions` parameter.
+
+```ts
+import { fetchWeatherApi } from 'openmeteo';
+
+const params = {
+    latitude: [52.54],
+    longitude: [13.41],
+    current: 'temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
+    hourly: 'temperature_2m,precipitation',
+    daily: 'weather_code,temperature_2m_max,temperature_2m_min'
+};
+const url = 'https://api.self-host.example.net/v1/forecast';
+const fetchOptions = {
+    headers: {
+        'Authorization': 'Bearer YOUR_API_KEY'
+    }
+};
+const responses = await fetchWeatherApi(url, params, 3, 0.2, 2, fetchOptions);
+
+// Process the response as shown in the previous example
+```
+
+## AbortController
+
+You can also use `AbortController` to cancel the request if needed.
+
+```ts
+import { fetchWeatherApi } from 'openmeteo';
+
+const params = {
+    latitude: [52.54],
+    longitude: [13.41],
+    current: 'temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
+    hourly: 'temperature_2m,precipitation',
+    daily: 'weather_code,temperature_2m_max,temperature_2m_min'
+};
+const url = 'https://api.open-meteo.com/v1/forecast';
+const controller = new AbortController();
+const fetchOptions = {
+    signal: controller.signal
+};
+
+// Start the request
+const fetchPromise = fetchWeatherApi(url, params, 3, 0.2, 2, fetchOptions);
+
+// Abort the request after 5 seconds
+setTimeout(() => controller.abort(), 5000);
+
+try {
+    const responses = await fetchPromise;
+    // Process the response as shown in the previous example
+} catch (error) {
+    if (error.name === 'AbortError') {
+        console.log('Request was aborted');
+    } else {
+        console.error('Fetch error:', error);
+    }
 }
 ```
 
