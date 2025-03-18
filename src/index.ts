@@ -7,12 +7,13 @@ async function fetchRetried(
   url: string,
   retries = 3,
   backoffFactor = 0.5,
-  backoffMax = 2
+  backoffMax = 2,
+  fetchOptions: RequestInit = {}
 ): Promise<Response> {
   const statusToRetry = [500, 502, 504];
   const statusWithJsonError = [400, 429];
   let currentTry = 0;
-  let response = await fetch(url);
+  let response = await fetch(url, fetchOptions);
 
   while (statusToRetry.includes(response.status)) {
     currentTry++;
@@ -22,7 +23,7 @@ async function fetchRetried(
     const sleepMs =
       Math.min(backoffFactor * 2 ** currentTry, backoffMax) * 1000;
     await sleep(sleepMs);
-    response = await fetch(url);
+    response = await fetch(url, fetchOptions);
   }
 
   if (statusWithJsonError.includes(response.status)) {
@@ -43,6 +44,7 @@ async function fetchRetried(
  * @param {number} [retries=3] Number of retries in case of an server error
  * @param {number} [backoffFactor=0.2] Exponential backoff factor to increase wait time after each retry
  * @param {number} [backoffMax=2] Maximum wait time between retries
+ * @param {RequestInit} [fetchOptions={}] Additional fetch options such as headers, signal, etc.
  * @returns {Promise<WeatherApiResponse[]>}
  */
 async function fetchWeatherApi(
@@ -50,7 +52,8 @@ async function fetchWeatherApi(
   params: any,
   retries = 3,
   backoffFactor = 0.2,
-  backoffMax = 2
+  backoffMax = 2,
+  fetchOptions: RequestInit = {}
 ): Promise<WeatherApiResponse[]> {
   const urlParams = new URLSearchParams(params);
   urlParams.set('format', 'flatbuffers');
@@ -58,7 +61,8 @@ async function fetchWeatherApi(
     `${url}?${urlParams.toString()}`,
     retries,
     backoffFactor,
-    backoffMax
+    backoffMax,
+    fetchOptions
   );
   const fb = new ByteBuffer(new Uint8Array(await response.arrayBuffer()));
 
