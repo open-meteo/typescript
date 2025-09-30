@@ -11,7 +11,7 @@
     "clean": "rm -rf ./lib/",
     "cm": "cz",
     "lint": "echo 'disabled' || eslint ./src/ --fix",
-    "prepare": "husky install",
+    "prepare": "husky",
     "semantic-release": "semantic-release",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
@@ -110,7 +110,7 @@
     ]
   },
   "dependencies": {
-    "@openmeteo/sdk": "^1.19.0",
+    "@openmeteo/sdk": "^1.21.1",
     "flatbuffers": "^25.2.10"
   }
 }
