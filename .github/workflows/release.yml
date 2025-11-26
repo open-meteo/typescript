@@ -27,5 +27,3 @@ jobs:
         run: npm test
       - name: Release
         run: npx semantic-release
-      # - name: Upload Code Coverage
-      #   uses: codecov/codecov-action@v3.1.0
